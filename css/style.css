@@ -296,7 +296,7 @@
 .bg-breadcrumb {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/ITjpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background/ITjpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -321,7 +321,7 @@
 .service {
     position: relative;
     overflow: hidden;
-    background-image: url(../img/IT2.jpg);
+    background-image: url(../img/background/IT2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -474,7 +474,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url(../img/IT3.jpg);
+    background-image: url(../img/background/IT3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
