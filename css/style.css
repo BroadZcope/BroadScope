@@ -296,7 +296,7 @@
 .bg-breadcrumb {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/ITjpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background/ITjpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -314,38 +314,14 @@
 /*** Single Page Hero Header End ***/
 
 
-/*** Feature Start ***/
-.feature .feature-item {
-    position: relative;
-    border-radius: 10px;
-    background: var(--bs-light);
-}
 
-.feature-item .feature-content {
-    position: absolute;
-    width: 100%; 
-    height: 100%; 
-    bottom: 0; 
-    left: 0;
-    margin-top: 0;
-    margin-right: 0; 
-    background: rgba(0, 0, 0, 0.7); 
-    border-radius: 10px;
-    z-index: 2;
-}
-
-.feature-item .feature-content .feature-content-inner {
-    position: relative;
-    z-index: 5;
-}
-/*** Feature End ***/
 
 
 /*** Service Start ***/
 .service {
     position: relative;
     overflow: hidden;
-    background-image: url(../img/IT2.jpg);
+    background-image: url(../img/background/IT2.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -429,243 +405,6 @@
 }
 /*** Service End ***/
 
-
-/*** Attractions Start ***/
-.attractions {
-    position: relative;
-    overflow: hidden;
-}
-
-.attractions::after {
-    content: "";
-    width: 100%;
-    height: 70%;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/IT.jpg) center center no-repeat;
-    background-size: cover;
-    z-index: -2;
-    animation-name: attraction-image-zoom;
-    animation-duration: 10s;
-    animation-delay: 1s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    transition: 1s;
-}
-
-@keyframes attraction-image-zoom {
-    0%  {width: 100%;}
-
-    25% {width: 115%;}
-
-    50% {width: 130%;}
-
-    75% {width: 120%;}
-
-    100% {width: 100%;}
-}
-
-.attractions .attractions-section {
-    position: relative;
-    z-index: 3;
-}
-
-.attractions .attractions-item {
-    position: relative;
-    border-radius: 10px;
-    transition: 0.5s;
-    z-index: 1;
-}
-
-.attractions .attractions-item::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, .7);
-    transition: 0.5s;
-    z-index: 2;
-}
-
-.attractions .attractions-item:hover:after {
-    height: 100%;
-}
-
-.attractions .attractions-item .attractions-name {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    color: var(--bs-white);
-    font-size: 24px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    z-index: 3;
-    opacity: 0;
-}
-
-.attractions .attractions-item:hover .attractions-name {
-    opacity: 1;
-}
-
-.attractions-carousel .owl-stage-outer {
-    margin-top: 58px;
-}
-
-.attractions .owl-nav .owl-prev {
-    position: absolute;
-    top: -58px;
-    left: 0;
-    background: var(--bs-primary);
-    color: var(--bs-white);
-    padding: 6px 35px;
-    border-radius: 30px;
-    transition: 0.5s;
-}
-
-.attractions .owl-nav .owl-prev:hover {
-    background: var(--bs-white);
-    color: var(--bs-primary);
-}
-
-.attractions .owl-nav .owl-next {
-    position: absolute;
-    top: -58px;
-    right: 0;
-    background: var(--bs-primary);
-    color: var(--bs-white);
-    padding: 6px 35px;
-    border-radius: 30px;
-    transition: 0.5s;
-}
-
-.attractions .owl-nav .owl-next:hover {
-    background: var(--bs-white);
-    color: var(--bs-primary);
-}
-/*** Attractions End ***/
-
-
-/*** Gallery Start ***/
-.gallery .gallery-item {
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.gallery .gallery-item img {
-    transition: 0.5s;
-}
-
-.gallery .gallery-item:hover img {
-    transform: scale(1.2);
-}
-
-.gallery .gallery-item::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    background: rgba(0, 0, 0, .4);
-    transition: 0.5s;
-    z-index: 1;
-}
-
-.gallery .gallery-item:hover::after {
-    width: 100%;
-    height: 100%;
-}
-
-.gallery .gallery-item .search-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.5s;
-    z-index: 5;
-    opacity: 0;
-}
-
-.gallery .gallery-item:hover .search-icon {
-    opacity: 1;
-}
-/*** Gallery End ***/
-
-/*** Blog Start ***/
-.blog .blog-item {
-    border-radius: 10px;
-}
-
-.blog .blog-item .blog-img {
-    position: relative;
-    overflow: hidden;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    transition: 0.5s;
-}
-
-.blog .blog-item .blog-img img {
-    transition: 0.5s;
-}
-
-.blog .blog-item:hover .blog-img img {
-    transform: scale(1.2);
-}
-
-.blog .blog-item .blog-img::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background: rgba(0, 0, 0, .3);
-    z-index: 1;
-}
-
-.blog .blog-item .blog-img .blog-category {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    border-radius: 10px;
-    color: var(--bs-white);
-    background: var(--bs-primary);
-    z-index: 5;
-}
-
-.blog .blog-item .blog-img .blog-date {
-    position: absolute;
-    bottom: 25px;
-    left: 25px;
-    color: var(--bs-white);
-    z-index: 5;
-}
-
-.blog .blog-item .blog-content {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background: var(--bs-light);
-}
-/*** Blog End ***/
-
 /*** Team Start ***/
 .team .team-item {
     position: relative;
@@ -735,7 +474,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url(../img/IT3.jpg);
+    background-image: url(../img/background/IT3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -929,5 +668,114 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
+.nav-link {
+        transition: all 0.3s ease;
+    }
 
+    .nav-link:hover {
+        background-color: #007bff;
+        color: #007bff !important;
+    }
 
+    .hover-bg:hover {
+        background-color: #f8f9fa;
+    }
+
+    .team-icon .btn:hover {
+        transform: scale(1.1);
+        background-color: #007bff;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.1);
+    }
+
+    .navbar-toggler {
+        border-color: transparent;
+    }
+
+    .navbar-toggler-icon {
+        background-color: #222288;
+    }
+
+    .contact-item:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+.btn-xl-square {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.footer {
+    background-color: #333;
+}
+
+.footer .footer-logo h4 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.footer .social-icons a {
+    font-size: 1.3rem;
+    transition: color 0.3s;
+}
+
+.footer .social-icons a:hover {
+    color: #f1c40f;
+}
+
+.footer h5 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+    color: #fff;
+}
+
+.footer .text-muted {
+    font-size: 1rem;
+}
+
+.footer .text-primary {
+    color: #3498db;
+}
+
+.footer .border-bottom {
+    border-bottom: 1px solid #fff;
+}
+
+.footer .text-white {
+    color: #fff;
+}
