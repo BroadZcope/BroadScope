@@ -321,7 +321,7 @@
 .service {
     position: relative;
     overflow: hidden;
-    background-image: url(../img/background/IT2.jpg);
+    background-image: url(../img/background/IT2.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -474,7 +474,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url(../img/background/IT3.jpg);
+    background-image: url(../img/background/IT3.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -698,10 +698,34 @@
         background-color: #222288;
     }
 
+    .contact-item {
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
     .contact-item:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-}
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+        border-color: #e0e0e0;
+    }
+
+    .form-control {
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        transform: translateY(-2px);
+    }
+
+    .form-label {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
 
 .btn-xl-square {
     width: 50px;
