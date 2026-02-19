@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application Development Resources — BroadScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --bg:#07090f;--surface:#0d1117;--surface-2:#111520;
+      --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.04);
+      --accent:#059669;--accent-lo:rgba(5,150,105,0.12);--accent-hi:#34d399;
+      --text-1:#f0f4ff;--text-2:#8b9ab7;--text-3:#49566e;
+      --radius:14px;--font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+    }
+    body{background:var(--bg);color:var(--text-1);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+    .orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+    .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(5,150,105,0.15) 0%,transparent 70%);top:-150px;right:-100px;animation:drift 20s ease-in-out infinite alternate}
+    .orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(52,211,153,0.08) 0%,transparent 70%);bottom:-100px;left:-80px;animation:drift 25s ease-in-out infinite alternate-reverse}
+    @keyframes drift{from{transform:translate(0,0)}to{transform:translate(30px,30px)}}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(7,9,15,0.8)}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-mark{width:32px;height:32px;background:var(--accent);border-radius:7px;display:grid;place-items:center;flex-shrink:0}
+    .logo-name{font-family:var(--font-head);font-weight:700;font-size:17px;color:var(--text-1)}
+    .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:13px;padding:9px 20px;border-radius:8px;text-decoration:none;transition:opacity .2s;letter-spacing:.02em}
+    .nav-cta:hover{opacity:.85}
+
+    /* HERO */
+    .hero{position:relative;z-index:1;padding:88px 48px 64px;max-width:860px;margin:0 auto;animation:fadeUp .7s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--accent-lo);border:1px solid rgba(5,150,105,0.3);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:24px}
+    .hero h1{font-family:var(--font-head);font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.06;letter-spacing:-1.2px;margin-bottom:18px}
+    .hero h1 em{font-style:normal;color:var(--accent-hi)}
+    .hero p{font-size:18px;color:var(--text-2);font-weight:300;max-width:600px;line-height:1.75}
+
+    /* ARTICLES WRAPPER */
+    .articles{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 48px 120px;display:flex;flex-direction:column;gap:80px}
+
+    /* ARTICLE */
+    article{animation:fadeUp .7s ease both}
+    article:nth-child(2){animation-delay:.15s}
+    .article-header{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+    .article-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:12px;display:block}
+    .article-header h2{font-family:var(--font-head);font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.1;letter-spacing:-.8px;color:var(--text-1);margin-bottom:14px}
+    .article-header .lead{font-size:17px;color:var(--text-2);line-height:1.75;font-weight:300;max-width:680px}
+
+    /* ARTICLE BODY */
+    .article-body{display:flex;flex-direction:column;gap:32px}
+    .section-block h3{font-family:var(--font-head);font-size:19px;font-weight:700;color:var(--text-1);margin-bottom:12px;letter-spacing:-.2px}
+    .section-block p{color:var(--text-2);font-size:15.5px;line-height:1.8;font-weight:300}
+    .section-block p+p{margin-top:12px}
+
+    /* CALLOUT BOX */
+    .callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent-hi);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:8px 0}
+    .callout p{font-size:14.5px;color:var(--text-2);line-height:1.75}
+    .callout strong{color:var(--text-1);font-weight:600}
+
+    /* NUMBERED LIST */
+    .num-list{display:flex;flex-direction:column;gap:14px;list-style:none}
+    .num-list li{display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--text-2);line-height:1.7}
+    .num-list .n{min-width:26px;height:26px;background:var(--accent-lo);border:1px solid rgba(5,150,105,.25);border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--accent-hi);flex-shrink:0;margin-top:2px}
+    .num-list strong{color:var(--text-1)}
+
+    /* TABLE */
+    .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    thead{background:var(--surface-2)}
+    th{padding:12px 18px;text-align:left;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);border-bottom:1px solid var(--border)}
+    td{padding:14px 18px;color:var(--text-2);border-bottom:1px solid var(--border-2);vertical-align:top;line-height:1.6}
+    tr:last-child td{border-bottom:none}
+    td:first-child{color:var(--text-1);font-weight:500}
+    tbody tr:hover{background:rgba(255,255,255,.02)}
+
+    /* ARTICLE CTA */
+    .article-cta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:8px}
+    .article-cta p{font-size:15px;color:var(--text-2);max-width:480px;line-height:1.6}
+    .article-cta strong{display:block;font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text-1);margin-bottom:6px}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:14px;padding:12px 24px;border-radius:9px;text-decoration:none;white-space:nowrap;transition:opacity .2s;flex-shrink:0}
+    .btn-primary:hover{opacity:.85}
+    .btn-primary svg{transition:transform .2s}
+    .btn-primary:hover svg{transform:translateX(3px)}
+
+    /* PAGE-LEVEL CTA BANNER */
+    .cta-banner{position:relative;z-index:1;max-width:860px;margin:0 auto 80px;padding:0 48px}
+    .cta-inner{background:linear-gradient(135deg,rgba(5,150,105,.15) 0%,rgba(5,150,105,.04) 100%);border:1px solid rgba(5,150,105,.25);border-radius:20px;padding:52px;text-align:center}
+    .cta-inner h2{font-family:var(--font-head);font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.6px;margin-bottom:14px}
+    .cta-inner p{font-size:16px;color:var(--text-2);max-width:480px;margin:0 auto 32px;line-height:1.7}
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:16px;padding:16px 36px;border-radius:10px;text-decoration:none;transition:opacity .2s}
+    .btn-lg:hover{opacity:.85}
+
+    /* FOOTER */
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-3)}
+    footer a{color:var(--text-3);text-decoration:none;transition:color .2s}
+    footer a:hover{color:var(--text-2)}
+    .footer-links{display:flex;gap:24px}
+
+    @media(max-width:720px){
+      header{padding:16px 24px}
+      .hero,.articles,.cta-banner{padding-left:24px;padding-right:24px}
+      .article-cta{flex-direction:column;align-items:flex-start}
+      .cta-inner{padding:36px 24px}
+      footer{flex-direction:column;gap:12px;text-align:center;padding:24px}
+    }
+  </style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<header>
+  <a href="https://broadscope.digital" class="logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 3h7.5a3.5 3.5 0 0 1 0 7H4V3z" fill="white" opacity=".9"/><path d="M4 10h8a3.5 3.5 0 0 1 0 7H4v-7z" fill="white"/></svg>
+    </div>
+    <span class="logo-name">BroadScope</span>
+  </a>
+  <a href="broadscope-booking.html" class="nav-cta">
+    Book a Discovery Call
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+    Application Development
+  </div>
+  <h1>Build software that <em>ships</em><br>and actually scales</h1>
+  <p>Two guides every founder or product lead should read before writing a single line of code. Save time, money, and the headache of rebuilding from scratch.</p>
+</div>
+
+<!-- ARTICLES -->
+<div class="articles">
+
+  <!-- ARTICLE 1 -->
+  <article>
+    <div class="article-header">
+      <span class="article-num">Article 01</span>
+      <h2>How to Scope an MVP<br>Without Feature Creep</h2>
+      <p class="lead">Most software projects don't fail because of bad code. They fail because nobody agreed on what "done" meant before the build started. Here's how to define your MVP with precision — so you launch fast and iterate with purpose.</p>
+    </div>
+    <div class="article-body">
+
+      <div class="section-block">
+        <h3>Why feature creep kills MVPs</h3>
+        <p>Feature creep doesn't start with bad intentions. It starts with a reasonable question: "While we're building this, shouldn't we also add…?" Each addition feels small. Collectively, they double your timeline, triple your budget, and guarantee you'll ship something that nobody has tested with real users.</p>
+        <p>The goal of an MVP is not to build something impressive. It is to answer one question as cheaply as possible: <strong>Will someone pay for this?</strong> Everything else is hypothesis.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>The core principle:</strong> An MVP is not a lite version of your product. It is the minimum surface area required to validate your most important assumption.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>The 3-question MVP framework</h3>
+        <p>Before scoping a single feature, answer these three questions in writing. If you can't answer them clearly, you're not ready to build.</p>
+        <ul class="num-list">
+          <li><div class="n">1</div><div><strong>What is the single problem we are solving?</strong> Not a list. One problem. For one type of person. If your answer contains the word "and", cut it in half.</div></li>
+          <li><div class="n">2</div><div><strong>What is the minimum action a user needs to take to get value?</strong> Map it as a step-by-step flow. Every feature that doesn't appear in that flow is out of scope for v1.</div></li>
+          <li><div class="n">3</div><div><strong>How will we know if this is working?</strong> Define a success metric before you build — not after. "Users are signing up" is not a metric. "40% of users complete onboarding and return within 7 days" is.</div></li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <h3>How to classify every feature request</h3>
+        <p>When a feature is proposed, run it through this filter before adding it to scope:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Question</th><th>If Yes</th><th>If No</th></tr></thead>
+            <tbody>
+              <tr><td>Does the MVP fail without this feature?</td><td>Include it</td><td>Move to v2 backlog</td></tr>
+              <tr><td>Can this be faked manually for now?</td><td>Fake it (don't build)</td><td>Evaluate further</td></tr>
+              <tr><td>Does it serve the core user flow?</td><td>Consider it</td><td>Cut it</td></tr>
+              <tr><td>Can it be added after launch without rebuilding?</td><td>Defer it</td><td>Prioritise if core</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h3>The "fake it first" rule</h3>
+        <p>Before building any backend logic, dashboards, or admin panels — ask whether it can be faked manually. Zapier instead of a custom integration. A spreadsheet instead of a database. A manual email instead of an automated sequence.</p>
+        <p>This isn't cutting corners. This is smart validation. You learn faster, spend less, and only build automation for processes you've confirmed are worth automating. Dropbox famously validated their entire product with a video before writing a single line of code.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Locking scope before development starts</h3>
+        <p>Once you've answered the three questions and filtered your feature list, create a one-page scope document that includes: the core user flow (step by step), a list of what's explicitly in v1, a list of what's explicitly deferred to v2, and the success metric you'll measure at launch.</p>
+        <p>This document becomes your single source of truth. Every scope change request gets evaluated against it. Not against enthusiasm, not against "it would be nice to have" — against the validated MVP definition you agreed to.</p>
+      </div>
+
+      <div class="article-cta">
+        <div>
+          <strong>Ready to scope your application?</strong>
+          <p>We'll walk through your idea, map the core user flow, and give you a clear picture of what your v1 actually needs — before you commit to anything.</p>
+        </div>
+        <a href="broadscope-booking.html" class="btn-primary">
+          Book a Free Call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- ARTICLE 2 -->
+  <article>
+    <div class="article-header">
+      <span class="article-num">Article 02</span>
+      <h2>How We Scope Custom Software<br>Without Scope Creep</h2>
+      <p class="lead">Scope creep is the most common reason software projects go over budget and under-deliver. Here's the exact process BroadScope uses to define, lock, and protect the scope of every custom build — so you always know what you're getting and when you're getting it.</p>
+    </div>
+    <div class="article-body">
+
+      <div class="section-block">
+        <h3>Why most scoping processes fail</h3>
+        <p>Most development agencies scope projects in a single discovery call, write a proposal, and start building. The problem is that clients don't know what they want until they see what they don't want. Without a structured process, requirements evolve mid-build — and every change costs time, money, and momentum.</p>
+        <p>Our scoping process is designed to surface ambiguity before it becomes a problem. We ask uncomfortable questions early so there are no surprises later.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Phase 1 — Problem mapping (before we talk about features)</h3>
+        <p>We start every project by mapping the problem, not the solution. This means understanding the current workflow (manual or broken), where the bottlenecks and failure points are, what a successful outcome looks like in measurable terms, and who the actual end users are (not just the person paying for it).</p>
+        <p>This phase typically takes one focused session. By the end, we have a written problem statement that both parties sign off on. This is not the spec — it's the constraint the spec must satisfy.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Our rule:</strong> We don't write a single line of code until the problem statement is locked. Features are solutions to problems. If the problem isn't defined, no feature is justified.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Phase 2 — User flow before UI</h3>
+        <p>After the problem is mapped, we build the user flow as a plain-text or simple diagram — not wireframes, not mockups. Just: what does the user do, in what order, to get the outcome they need?</p>
+        <p>This step catches 80% of scope issues. We consistently find features that seemed important but aren't in the flow, and flows that reveal missing features nobody mentioned. User flow review is where we eliminate feature creep before it enters the backlog.</p>
+        <ul class="num-list">
+          <li><div class="n">1</div><div><strong>Map the happy path</strong> — the exact steps a user takes to complete the core action</div></li>
+          <li><div class="n">2</div><div><strong>Map the edge cases</strong> — what happens when something goes wrong or the user takes an unexpected action</div></li>
+          <li><div class="n">3</div><div><strong>Identify integration points</strong> — where does this system touch other systems? These are always where timelines slip.</div></li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <h3>Phase 3 — The locked scope document</h3>
+        <p>Once the user flow is confirmed, we produce a locked scope document. This is not a proposal or an estimate — it is an agreement. It contains the full feature list with acceptance criteria for each item, explicit exclusions (what is not in scope and why), integration requirements and dependencies, and a phased delivery plan with milestones.</p>
+        <p>Both parties sign it. Any change request after sign-off goes through a formal change order process — not a Slack message. This protects both the client and the build team.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>How we handle change requests mid-build</h3>
+        <p>Change requests are inevitable. The question is whether they're controlled or chaotic. Our process: every change request is logged, assessed for impact on timeline and budget, and presented back to the client with options. Option A: add it now with a formal extension. Option B: defer it to v2. Option C: replace an existing feature.</p>
+        <p>What we never do is absorb changes silently. Silent scope expansion is how projects fail. Transparency about tradeoffs is how they succeed.</p>
+      </div>
+
+      <div class="article-cta">
+        <div>
+          <strong>Want to see how we'd scope your project?</strong>
+          <p>Bring your idea — however rough — and we'll walk you through our scoping process live. You'll leave with clarity on what v1 actually needs, what it costs, and how long it takes.</p>
+        </div>
+        <a href="broadscope-booking.html" class="btn-primary">
+          Book a Free Call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- PAGE CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Ready to build something that actually works?</h2>
+    <p>30 minutes. No pitch. Just a clear conversation about your project and whether we're the right fit to build it.</p>
+    <a href="broadscope-booking.html" class="btn-lg">
+      Book Your Discovery Call
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 BroadScope. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="https://broadscope.digital">← Back to site</a>
+    <a href="broadscope-booking.html">Book a call</a>
+    <a href="mailto:scopebroad@gmail.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

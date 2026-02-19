@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Development Resources — BroadScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --bg:#07090f;--surface:#0d1117;--surface-2:#111520;
+      --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.04);
+      --accent:#0284c7;--accent-lo:rgba(2,132,199,0.12);--accent-hi:#38bdf8;
+      --text-1:#f0f4ff;--text-2:#8b9ab7;--text-3:#49566e;
+      --radius:14px;--font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+    }
+    body{background:var(--bg);color:var(--text-1);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+    .orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+    .orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(2,132,199,0.15) 0%,transparent 70%);top:-160px;left:-130px;animation:drift 21s ease-in-out infinite alternate}
+    .orb-2{width:360px;height:360px;background:radial-gradient(circle,rgba(56,189,248,0.09) 0%,transparent 70%);bottom:-100px;right:-90px;animation:drift 17s ease-in-out infinite alternate-reverse}
+    @keyframes drift{from{transform:translate(0,0)}to{transform:translate(32px,28px)}}
+
+    header{position:sticky;top:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);background:rgba(7,9,15,0.8)}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-mark{width:32px;height:32px;background:var(--accent);border-radius:7px;display:grid;place-items:center;flex-shrink:0}
+    .logo-name{font-family:var(--font-head);font-weight:700;font-size:17px;color:var(--text-1)}
+    .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:13px;padding:9px 20px;border-radius:8px;text-decoration:none;transition:opacity .2s;letter-spacing:.02em}
+    .nav-cta:hover{opacity:.85}
+
+    .hero{position:relative;z-index:1;padding:88px 48px 64px;max-width:860px;margin:0 auto;animation:fadeUp .7s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--accent-lo);border:1px solid rgba(2,132,199,0.3);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:24px}
+    .hero h1{font-family:var(--font-head);font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.06;letter-spacing:-1.2px;margin-bottom:18px}
+    .hero h1 em{font-style:normal;color:var(--accent-hi)}
+    .hero p{font-size:18px;color:var(--text-2);font-weight:300;max-width:600px;line-height:1.75}
+
+    .articles{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 48px 120px;display:flex;flex-direction:column;gap:80px}
+    article{animation:fadeUp .7s ease both}
+    article:nth-child(2){animation-delay:.15s}
+    .article-header{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+    .article-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-hi);margin-bottom:12px;display:block}
+    .article-header h2{font-family:var(--font-head);font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.1;letter-spacing:-.8px;color:var(--text-1);margin-bottom:14px}
+    .article-header .lead{font-size:17px;color:var(--text-2);line-height:1.75;font-weight:300;max-width:680px}
+    .article-body{display:flex;flex-direction:column;gap:32px}
+    .section-block h3{font-family:var(--font-head);font-size:19px;font-weight:700;color:var(--text-1);margin-bottom:12px;letter-spacing:-.2px}
+    .section-block p{color:var(--text-2);font-size:15.5px;line-height:1.8;font-weight:300}
+    .section-block p+p{margin-top:12px}
+    .callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent-hi);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:8px 0}
+    .callout p{font-size:14.5px;color:var(--text-2);line-height:1.75}
+    .callout strong{color:var(--text-1);font-weight:600}
+    .num-list{display:flex;flex-direction:column;gap:14px;list-style:none}
+    .num-list li{display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--text-2);line-height:1.7}
+    .num-list .n{min-width:26px;height:26px;background:var(--accent-lo);border:1px solid rgba(2,132,199,.25);border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--accent-hi);flex-shrink:0;margin-top:2px}
+    .num-list strong{color:var(--text-1)}
+    .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    thead{background:var(--surface-2)}
+    th{padding:12px 18px;text-align:left;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);border-bottom:1px solid var(--border)}
+    td{padding:14px 18px;color:var(--text-2);border-bottom:1px solid var(--border-2);vertical-align:top;line-height:1.6}
+    tr:last-child td{border-bottom:none}
+    td:first-child{color:var(--text-1);font-weight:500}
+    tbody tr:hover{background:rgba(255,255,255,.02)}
+    .article-cta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:8px}
+    .article-cta p{font-size:15px;color:var(--text-2);max-width:480px;line-height:1.6}
+    .article-cta strong{display:block;font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text-1);margin-bottom:6px}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:14px;padding:12px 24px;border-radius:9px;text-decoration:none;white-space:nowrap;transition:opacity .2s;flex-shrink:0}
+    .btn-primary:hover{opacity:.85}
+    .btn-primary svg{transition:transform .2s}
+    .btn-primary:hover svg{transform:translateX(3px)}
+    .cta-banner{position:relative;z-index:1;max-width:860px;margin:0 auto 80px;padding:0 48px}
+    .cta-inner{background:linear-gradient(135deg,rgba(2,132,199,.15) 0%,rgba(2,132,199,.04) 100%);border:1px solid rgba(2,132,199,.25);border-radius:20px;padding:52px;text-align:center}
+    .cta-inner h2{font-family:var(--font-head);font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.6px;margin-bottom:14px}
+    .cta-inner p{font-size:16px;color:var(--text-2);max-width:480px;margin:0 auto 32px;line-height:1.7}
+    .btn-lg{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-family:var(--font-head);font-weight:700;font-size:16px;padding:16px 36px;border-radius:10px;text-decoration:none;transition:opacity .2s}
+    .btn-lg:hover{opacity:.85}
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--text-3)}
+    footer a{color:var(--text-3);text-decoration:none;transition:color .2s}
+    footer a:hover{color:var(--text-2)}
+    .footer-links{display:flex;gap:24px}
+    @media(max-width:720px){header{padding:16px 24px}.hero,.articles,.cta-banner{padding-left:24px;padding-right:24px}.article-cta{flex-direction:column;align-items:flex-start}.cta-inner{padding:36px 24px}footer{flex-direction:column;gap:12px;text-align:center;padding:24px}}
+  </style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<header>
+  <a href="https://broadscope.digital" class="logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 3h7.5a3.5 3.5 0 0 1 0 7H4V3z" fill="white" opacity=".9"/><path d="M4 10h8a3.5 3.5 0 0 1 0 7H4v-7z" fill="white"/></svg>
+    </div>
+    <span class="logo-name">BroadScope</span>
+  </a>
+  <a href="broadscope-booking.html" class="nav-cta">
+    Book a Discovery Call
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</header>
+
+<div class="hero">
+  <div class="hero-tag">
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+    Website Development
+  </div>
+  <h1>Build a website that <em>converts</em><br>not just one that exists</h1>
+  <p>Two guides for business owners and marketing leads planning a website redesign — covering what actually matters before you brief a developer and what separates high-converting sites from expensive brochures.</p>
+</div>
+
+<div class="articles">
+
+  <!-- ARTICLE 1 -->
+  <article>
+    <div class="article-header">
+      <span class="article-num">Article 01</span>
+      <h2>Website Redesign Checklist:<br>What Actually Matters</h2>
+      <p class="lead">Most website redesigns are driven by one of two things: someone thinks it looks outdated, or a new marketing manager wants to put their stamp on things. Neither is a business case. Here's how to approach a redesign with the clarity that turns it into a genuine growth investment.</p>
+    </div>
+    <div class="article-body">
+
+      <div class="section-block">
+        <h3>The question you need to answer first</h3>
+        <p>Before you talk to a developer, before you collect inspiration screenshots, before you even decide you need a redesign — answer this: what is the single most important action you want a visitor to take on your website?</p>
+        <p>Book a call. Request a quote. Sign up for a trial. Buy a product. Everything on your website should be designed to lead visitors toward that action. If you don't know what that action is, any design you build will be aesthetically driven — and aesthetics don't convert.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>The most common mistake:</strong> Building a website that communicates everything about the company and nothing about what the visitor should do next. A website is not a brochure. It is a conversion system.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Pre-redesign audit checklist</h3>
+        <p>Before briefing any developer, work through these items. They will define what your redesign actually needs to achieve — and they'll save you from building the wrong thing beautifully.</p>
+        <ul class="num-list">
+          <li><div class="n">1</div><div><strong>Define your primary conversion goal.</strong> One action. Not three. What does a successful visit look like?</div></li>
+          <li><div class="n">2</div><div><strong>Audit your current conversion rate.</strong> How many visitors currently take the desired action? You need a baseline to know if the redesign worked.</div></li>
+          <li><div class="n">3</div><div><strong>Identify your three most important audience segments.</strong> Who visits your site? What do they need to know to take action? Are those three groups well-served by your current homepage?</div></li>
+          <li><div class="n">4</div><div><strong>Map the current user journey.</strong> From landing to conversion — what path does a visitor take? Where do they drop off? Analytics data makes this concrete.</div></li>
+          <li><div class="n">5</div><div><strong>Audit your current messaging.</strong> Does your homepage answer: What is this? Who is it for? Why should I care? What do I do next? If not, the redesign starts with messaging, not design.</div></li>
+          <li><div class="n">6</div><div><strong>Define technical requirements.</strong> Do you need a CMS? E-commerce? Booking integration? SEO infrastructure? These requirements drive platform decisions, and platform decisions made late are expensive.</div></li>
+          <li><div class="n">7</div><div><strong>Set a success metric.</strong> How will you measure whether the redesign achieved its goal? Conversion rate increase? More qualified leads? Reduced bounce rate? Define it before the build starts.</div></li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <h3>What to brief your developer on</h3>
+        <p>A great developer brief contains: your primary conversion goal, your target audience segments and their core questions, the user journey you want to create, the technical integrations required, the content you have versus the content you need to create, your timeline, and your success metric.</p>
+        <p>What it should not contain: screenshots of competitor websites you like, vague adjectives like "modern" or "clean", and design opinions from people who aren't your target audience. Briefs based on taste produce websites that look good to the people who commissioned them. Briefs based on conversion goals produce websites that work.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>The content problem most redesigns ignore</h3>
+        <p>More redesigns stall on content than on design or development. Companies brief developers, approve wireframes, approve designs — and then discover they don't have the copy, images, or case studies needed to fill the pages. Content creation takes longer than people expect and requires decisions about positioning that are often unresolved.</p>
+        <p>Map your content requirements before the build starts. Identify what exists, what needs to be written, and who is responsible for creating it. Build content timelines into the project plan. Treat content as a dependency, not an afterthought.</p>
+      </div>
+
+      <div class="article-cta">
+        <div>
+          <strong>Planning a redesign and not sure where to start?</strong>
+          <p>We'll help you work through the pre-redesign audit in a single call — so you know exactly what your new site needs to achieve and whether we're the right team to build it.</p>
+        </div>
+        <a href="broadscope-booking.html" class="btn-primary">
+          Book a Free Call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- ARTICLE 2 -->
+  <article>
+    <div class="article-header">
+      <span class="article-num">Article 02</span>
+      <h2>What Makes a High-Converting<br>Website (Beyond Design)</h2>
+      <p class="lead">A beautiful website that doesn't convert is an expensive piece of digital furniture. Conversion is not a design outcome — it's an architecture outcome. Here's what actually drives visitors to take action, and how to build it intentionally into your site.</p>
+    </div>
+    <div class="article-body">
+
+      <div class="section-block">
+        <h3>The three questions every visitor asks</h3>
+        <p>When someone lands on your website — any page, from any source — they are subconsciously asking three questions. You have approximately 5 seconds to answer them before they leave.</p>
+        <ul class="num-list">
+          <li><div class="n">1</div><div><strong>"What is this?"</strong> Is it immediately clear what the company does and who it's for? Not clear after reading three paragraphs — clear within the first sentence of the headline.</div></li>
+          <li><div class="n">2</div><div><strong>"Why should I care?"</strong> Is the value proposition compelling to me, specifically? Does it speak to my problem, my industry, my situation — or does it sound like it could apply to any business in any sector?</div></li>
+          <li><div class="n">3</div><div><strong>"What do I do next?"</strong> Is there a clear, obvious next step? Is the call to action visible without scrolling? Is there one primary action, or are there five competing options that create decision paralysis?</div></li>
+        </ul>
+        <p>These three questions are answered (or not) in the hero section of your homepage. Every conversion problem starts here.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>The homepage test:</strong> Show your homepage to someone who has never heard of your company. Give them 5 seconds. Then ask: what does this company do? Who is it for? What are you supposed to do next? Their answers will tell you everything you need to know about your conversion problem.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Architecture decisions that drive conversion</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Element</th><th>High-Converting Approach</th><th>Common Mistake</th></tr></thead>
+            <tbody>
+              <tr><td>Headline</td><td>Outcome-focused, specific to audience</td><td>Company name or vague tagline</td></tr>
+              <tr><td>CTA placement</td><td>Above the fold, repeated at logical scroll points</td><td>Only in footer or contact page</td></tr>
+              <tr><td>Social proof</td><td>Specific results, named clients, relevant industries</td><td>Generic testimonials, unnamed sources</td></tr>
+              <tr><td>Navigation</td><td>Minimal, guides toward conversion</td><td>Everything accessible, no hierarchy</td></tr>
+              <tr><td>Page length</td><td>Long enough to answer all objections, no longer</td><td>Either too short (no trust) or too long (no direction)</td></tr>
+              <tr><td>Mobile experience</td><td>Designed mobile-first, CTA always visible</td><td>Desktop design shrunk to mobile</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h3>How trust architecture works</h3>
+        <p>Conversion is a trust transaction. A visitor doesn't convert because your website is beautiful — they convert because they trust that you can deliver what you're promising. Trust is built through specific, verifiable signals: named clients and case studies (not anonymous testimonials), specific outcomes with numbers (not vague claims like "we helped them grow"), visible team members and real credentials, and evidence that you understand their specific industry or problem.</p>
+        <p>Each section of a high-converting website is designed to answer the objection that's preventing the visitor from moving forward. The homepage builds initial trust. The services or solutions page resolves scope uncertainty. Case studies resolve performance uncertainty. The contact or booking page resolves commitment anxiety. Each section does a specific job in the conversion journey.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Performance and SEO as conversion factors</h3>
+        <p>A beautiful website that loads slowly is a website that doesn't convert. Page speed directly affects bounce rate — and bounce rate directly affects conversion rate. The benchmark is a Largest Contentful Paint (LCP) under 2.5 seconds on mobile. Most websites don't meet this threshold. Most businesses don't know what their threshold is.</p>
+        <p>SEO and conversion are not competing priorities. A well-structured page optimised for a specific search intent will convert better than a generic page — because visitors arriving from specific searches have higher intent and find more relevant content. Structure your pages around the questions your target customers are actively searching, not around the way your internal team describes your services.</p>
+      </div>
+
+      <div class="section-block">
+        <h3>Measuring conversion accurately</h3>
+        <p>You can't improve what you don't measure. Before launch, set up: Google Analytics 4 with conversion events configured, goal tracking for the primary conversion action, heatmaps (Hotjar or equivalent) to see where visitors click and where they stop scrolling, and session recording to observe real visitor behaviour. Review this data monthly, identify the biggest drop-off point in the conversion journey, and make one targeted change at a time. Iterative, data-driven improvement consistently outperforms periodic full redesigns.</p>
+      </div>
+
+      <div class="article-cta">
+        <div>
+          <strong>Know your site isn't converting but not sure why?</strong>
+          <p>Bring your current site and your conversion data. We'll identify the specific architectural issues causing drop-off and show you what a conversion-focused redesign would actually change.</p>
+        </div>
+        <a href="broadscope-booking.html" class="btn-primary">
+          Book a Free Call
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="cta-banner">
+  <div class="cta-inner">
+    <h2>Want a website that actually earns its keep?</h2>
+    <p>30 minutes to understand your goals, audit your current site, and tell you exactly what a conversion-focused redesign would involve.</p>
+    <a href="broadscope-booking.html" class="btn-lg">
+      Book Your Discovery Call
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 BroadScope. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="https://broadscope.digital">← Back to site</a>
+    <a href="broadscope-booking.html">Book a call</a>
+    <a href="mailto:scopebroad@gmail.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
